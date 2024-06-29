@@ -40,7 +40,7 @@ void get_norm_rigid_mesh_inv_grid(Mat& grid, Mat& W_inv, const int input_height,
 		for (int j = 0;j < length; j++)
 		{
 			const float d2_ij = powf(W.at<float>(i, 0) - W.at<float>(j, 0), 2.0) + powf(W.at<float>(i, 1) - W.at<float>(j, 1), 2.0) + powf(W.at<float>(i, 2) - W.at<float>(j, 2), 2.0);
-			W.at<float>(i, 3 + j) = d2_ij * logf(d2_ij + 1e-6);
+			W.at<float>(i, 3 + j) = d2_ij * logf(d2_ij + 1e-9);
 		}
 	}
 	for (int i = 0; i < 3; i++)
@@ -77,7 +77,7 @@ void get_norm_rigid_mesh_inv_grid(Mat& grid, Mat& W_inv, const int input_height,
 		for (int j = 0; j < grid_width; j++)
 		{
 			const float d2_ij = powf(norm_rigid_mesh.at<float>(i, 0) - grid.at<float>(1, j), 2.0) + powf(norm_rigid_mesh.at<float>(i, 1) - grid.at<float>(2, j), 2.0);
-			grid.at<float>(3 + i, j) = d2_ij * logf(d2_ij + 1e-6);
+			grid.at<float>(3 + i, j) = d2_ij * logf(d2_ij + 1e-9);
 		}
 	}
 	norm_rigid_mesh.release();
